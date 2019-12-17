@@ -5,11 +5,204 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Quizzit</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 
 <body>
 
+
+    <div id="main" class="container">
+        <h1 class="row-12" style="text-align: center;">
+            WELCOME!</h1>
+        <hr>
+        <form id="name-container" action="">
+            <input type="text" name="entryname" placeholder="ENTER NAME">
+            <button onclick="return changePage(0)"> </button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
 </body>
+
+<script>
+
+    let score = 0;
+
+    let selectedAnswer = ""
+
+
+
+    function handleSelectedAnswer(e) {
+        console.log(e)
+        selectedAnswer = e.target.value;
+    }
+
+    function handleSubmit(selectedAnswer, answer) {
+
+    }
+
+
+    console.log(selectedAnswer)
+
+
+
+    var questions = [
+        {
+            title: "Where is the national headquarters for PRCA( Professional Rodeo Cowboy Association) located?",
+            choices: ["Austin, Texas", "Colorado Springs, Colorado", "Salt Lake City, Utah", "Buckeye, Arizona"],
+            answer: "Colorado Springs, Colorado"
+        },
+        {
+            title: "In what year did PRCA adopt the word "Professional" to their name?",
+            choices: ["1978", "1993", "1975", "1981"],
+            answer: "1975"
+        },
+        {
+            title: "Who is the back to back reining World Champion in Barrel Racing?",
+            choices: ["Hailey Kinsel", "Emily Miller", "Lisa Lockhart", "Ivy Conrado"],
+            answer: "Hailey Kinsel"
+        },
+        {
+            title: "Who was inducted into the Hall of Fame for 11 World Champion Barrl Raicng Titles?",
+            choices: ["Reba McEntire", "Martha Kilcrease", "Lisa Lockhart", "Charmayne James"],
+            answer: "Charmayne James"
+        },
+        {
+            title: "What year was the current arena record in Barrel Racing at the Thomas and Mack NFR won with?",
+            choices: ["2015", "2017", "2018", "2010"],
+            answer: "2017"
+        },
+        ///etc.
+    ];
+
+    let renderOptions = (choices) => {
+        return choices.map((choice, index) => {
+            console.log(choice)
+            return `<option value=${choice}> ${choice} </option>`
+        })
+    }
+
+    let welcomePage = "Let's Play!"
+    var page1 = `
+            <div>
+                <h1 class="row-12" style="text-align: center;">
+                        ${welcomePage}
+            </h1>
+        <hr>
+        <form id="name-container" action="">
+            <input type="text" id="entryname" placeholder="ENTER NAME">
+            <button id="change-button" onclick="return changePage(0)"> Start Quiz! </button>
+        </form>
+            </div>
+    `
+
+    let page3 = `
+    <div>
+                <h1 class="row-12" style="text-align: center;">
+                        ${questions[0].title}
+            </h1>
+        <hr>
+        <form id="name-container" action="">
+            <select id="selectMenu">
+                ${renderOptions(questions[0].choices)}
+
+            </select>
+        </form>
+            <button id="submitButton" > Next Question </button>
+
+            </div>
+    
+    `
+    let page4 = `
+    <div>
+                <h1 class="row-12" style="text-align: center;">
+                        ${questions[0].title}
+            </h1>
+        <hr>
+        <form id="name-container" action="">
+            <select id="selectMenu">
+                ${renderOptions(questions[0].choices)}
+
+            </select>
+        </form>
+            <button id="submitButton" > Next Question </button>
+
+            </div>
+    
+    `
+    let page5 = `
+    <div>
+                <h1 class="row-12" style="text-align: center;">
+                        ${questions[0].title}
+            </h1>
+        <hr>
+        <form id="name-container" action="">
+            <select id="selectMenu">
+                ${renderOptions(questions[0].choices)}
+
+            </select>
+        </form>
+            <button id="submitButton" > Next Question </button>
+
+            </div>
+    
+    `
+    let page6 = `
+    <div>
+                <h1 class="row-12" style="text-align: center;">
+                        ${questions[0].title}
+            </h1>
+        <hr>
+        <form id="name-container" action="">
+            <select id="selectMenu">
+                ${renderOptions(questions[0].choices)}
+
+            </select>
+        </form>
+            <button id="submitButton" > Next Question </button>
+
+            </div>
+    
+    `
+    let page7 = `
+    <div>
+                <h1 class="row-12" style="text-align: center;">
+                        ${questions[0].title}
+            </h1>
+        <hr>
+        <form id="name-container" action="">
+            <select id="selectMenu">
+                ${renderOptions(questions[0].choices)}
+
+            </select>
+        </form>
+            <button id="submitButton" > Next Question </button>
+
+            </div>
+    
+    `
+
+    let pages = [page2, page3, page4, page5, page6, page7]
+
+    const changePage = (index) => {
+        let main = document.getElementById('main')
+        main.innerHTML = pages[index]
+
+        $("#selectMenu").on("change", handleSelectedAnswer)
+        $("#submitButton").on("click", handleSubmit)
+
+    }
+
+    window.onload = () => {
+
+        changePage(2)
+    }
+
+
+
+</script>
 
 </html>
