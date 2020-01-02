@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Rodeo Quiz</title>
+</head>
+
+<body>
+
+    <div id="main" class="container">
+        <h1>Where is the national headquarters for PRCA( Professional Rodeo Cowboy Association) located?
+        </h1><br>
+        <form>
+            <input type="radio" name="choice" value="Texas"> Austin, TX
+            <br>
+            <input type="radio" name="choice" value="Colorado"> Colorado Springs, CO
+            <br>
+            <input type="radio" name="choice" value="Utah"> Salt Lake City, UT
+            <br>
+            <input type="radio" name="choice" value="Arizona"> Buckeye, AZ
+        </form>
+        <button onclick="submitAnswer()" Submit Answer>
+        </button>
+    </div>
+</body>
+<script src="./script.js"></script>
+<script>
+    document.location.href = `./page1.html`
+
+    function submitAnswer() {
+        var radios = document.getElementsByName("choice");
+        var i = 0, len = radios.length;
+        var checked = false;
+        var userAnswer;
+
+        for (; i < len; i++) {
+            if (radios[i].checked) {
+                checked = true;
+                userAnswer = radios[i].value;
+            }
+        }
+        // if user click submit button without selecting any option, alert box should be say "please select choice answer".
+        if (!checked) {
+            alert("please select choice answer");
+            return;
+        }
+        // Correct answer
+        if (userAnswer === "Colorado") {
+            alert("Answer is correct!");
+        }
+        // incorrect answer
+        else {
+            alert("Answer is wrong!");
+        }
+
+    }
+</script>
+
+</html>

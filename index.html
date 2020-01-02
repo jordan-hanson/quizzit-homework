@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <title>Quizzit</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Rodeo Quiz</title>
 
 </head>
 
@@ -16,36 +16,53 @@
 
     <div id="main" class="container">
         <h1 class="row-12" style="text-align: center;">
-            WELCOME!</h1>
+            Coding Quiz Challenge </h1>
         <hr>
-        <form id="name-container" action="">
-            <input type="text" name="entryname" placeholder="ENTER NAME">
-            <button onclick="return changePage(0)"> </button>
+        <form id="nameContainer" action="">
+            <input id="enterNameField" type="text" name="entryname" placeholder="ENTER NAME">
+            <button type="button" id="enterButton"> </button>
         </form>
     </div>
 
-    <script src="script.js"></script>
 </body>
+<script src="./script.js"></script>
 
 <script>
 
+
+
     let score = 0;
+    var currentUserName = localStorage.getItem('currentUserName');
 
     let selectedAnswer = ""
+    let enterNameField = document.getElementById('enterNameField')
 
+    function enterQuiz() {
+        let storage = window.localStorage;
 
+        console.log(enterNameField.value, 'this is entername field')
+        storage.setItem('currentUserName', enterNameField.value)
+        document.location.href = `./page1.html`
+
+    }
+
+    let enterButton = document.getElementById('enterButton')
+
+    enterButton.addEventListener('click', () => enterQuiz())
 
     function handleSelectedAnswer(e) {
         console.log(e)
         selectedAnswer = e.target.value;
     }
 
+
+
     function handleSubmit(selectedAnswer, answer) {
 
     }
 
 
-    console.log(selectedAnswer)
+    //console.log(selectedAnswer)
 
 
 
@@ -56,7 +73,7 @@
             answer: "Colorado Springs, Colorado"
         },
         {
-            title: "In what year did PRCA adopt the word "Professional" to their name?",
+            title: "In what year did PRCA adopt the word Professional to their name?",
             choices: ["1978", "1993", "1975", "1981"],
             answer: "1975"
         },
@@ -80,13 +97,12 @@
 
     let renderOptions = (choices) => {
         return choices.map((choice, index) => {
-            console.log(choice)
             return `<option value=${choice}> ${choice} </option>`
         })
     }
 
-    let welcomePage = "Let's Play!"
-    var page1 = `
+    let welcomePage = "welcomePage"
+    var page2 = `
             <div>
                 <h1 class="row-12" style="text-align: center;">
                         ${welcomePage}
@@ -94,7 +110,7 @@
         <hr>
         <form id="name-container" action="">
             <input type="text" id="entryname" placeholder="ENTER NAME">
-            <button id="change-button" onclick="return changePage(0)"> Start Quiz! </button>
+            <button id="change-button" onclick="return changePage(0)"> Let's Begin </button>
         </form>
             </div>
     `
@@ -108,11 +124,9 @@
         <form id="name-container" action="">
             <select id="selectMenu">
                 ${renderOptions(questions[0].choices)}
-
             </select>
         </form>
-            <button id="submitButton" > Next Question </button>
-
+            <button id="submitButton" onclick="return changePage(0)> Next Question </button>
             </div>
     
     `
@@ -125,11 +139,9 @@
         <form id="name-container" action="">
             <select id="selectMenu">
                 ${renderOptions(questions[0].choices)}
-
             </select>
         </form>
-            <button id="submitButton" > Next Question </button>
-
+            <button id="submitButton" onclick="return changePage(0)> Next Question </button>
             </div>
     
     `
@@ -142,11 +154,9 @@
         <form id="name-container" action="">
             <select id="selectMenu">
                 ${renderOptions(questions[0].choices)}
-
             </select>
         </form>
-            <button id="submitButton" > Next Question </button>
-
+            <button id="submitButton" onclick="return changePage(0)> Next Question </button>
             </div>
     
     `
@@ -159,11 +169,9 @@
         <form id="name-container" action="">
             <select id="selectMenu">
                 ${renderOptions(questions[0].choices)}
-
             </select>
         </form>
-            <button id="submitButton" > Next Question </button>
-
+            <button id="submitButton" onclick="return changePage(0)> Next Question </button>
             </div>
     
     `
@@ -176,11 +184,9 @@
         <form id="name-container" action="">
             <select id="selectMenu">
                 ${renderOptions(questions[0].choices)}
-
             </select>
         </form>
-            <button id="submitButton" > Next Question </button>
-
+            <button id="submitButton" onclick="return changePage(0)> Next Question </button>
             </div>
     
     `
@@ -196,10 +202,10 @@
 
     }
 
-    window.onload = () => {
+    //window.onload = () => {
 
-        changePage(2)
-    }
+    //    changePage(1)
+    //}
 
 
 
