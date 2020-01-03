@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rodeo Quiz</title>
+</head>
+
+<body>
+    <div id="main" class="container">
+        <h1 id="titleContainer">
+            You LOSE!
+            Do you want to play again?
+        </h1>
+        <button id="submitButton">
+            Play Again
+        </button>
+    </div>
+</body>
+
+
+<script>
+    let storage = window.localStorage;
+
+    const startOver = () => {
+        storage.setItem('secondsLeft', 90)
+        storage.setItem('score', 0)
+        document.location.href = "./page1.html"
+
+    }
+
+    window.onload = () => {
+        let submitButton = document.getElementById('submitButton')
+        submitButton.onclick = startOver
+    }
+
+</script>
+
+</html>

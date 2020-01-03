@@ -13,26 +13,65 @@
 <body>
 
     <div id="main" class="container">
-        <h1>Where is the national headquarters for PRCA( Professional Rodeo Cowboy Association) located?
-        </h1><br>
-        <form>
+        <div id="timer"> </div>
+        <h1 id="titleContainer"> Where is the national headquarters for PRCA( Professional Rodeo Cowboy Association)
+            located?
+        </h1>
+        <div class="row"></div>
+        <div class="col-sm-12"></div>
+        <form id="answerContainer">
             <input type="radio" name="choice" value="Texas"> Austin, TX
+            <br>
             <br>
             <input type="radio" name="choice" value="Colorado"> Colorado Springs, CO
             <br>
+            <br>
             <input type="radio" name="choice" value="Utah"> Salt Lake City, UT
+            <br>
             <br>
             <input type="radio" name="choice" value="Arizona"> Buckeye, AZ
         </form>
-        <button onclick="submitAnswer()" Submit Answer>
-        </button>
+        <br>
+        <div class="col-sm-6" id="buttonRow">
+            <button id="submitButton">Next Question
+            </button>
+        </div>
     </div>
 </body>
 <script src="./script.js"></script>
 <script>
-    document.location.href = `./page1.html`
+    let storage = window.localStorage;
 
-    function submitAnswer() {
+    let score = storage.getItem('score')
+
+    const renderTimer = () => {
+        let timer = document.getElementById('timer')
+        let storage = window.localStorage;
+        let secondsLeft = storage.getItem('secondsLeft')
+        timer.textContent = secondsLeft
+
+        let timeLeft = Number(secondsLeft)
+
+        var timeInterval = setInterval(function () {
+            timeLeft.textContent = timeLeft;
+            timeLeft--;
+            timer.textContent = timeLeft;
+
+            if (timeLeft === 0) {
+                document.location.href = "./gameover.html"
+
+                clearInterval(timeInterval);
+
+            }
+
+        }, 1000);
+
+    }
+
+    const myFunc = () => {
+        let timer = document.getElementById('timer')
+
+        console.log('hit')
         var radios = document.getElementsByName("choice");
         var i = 0, len = radios.length;
         var checked = false;
@@ -44,21 +83,51 @@
                 userAnswer = radios[i].value;
             }
         }
-        // if user click submit button without selecting any option, alert box should be say "please select choice answer".
         if (!checked) {
             alert("please select choice answer");
             return;
         }
-        // Correct answer
         if (userAnswer === "Colorado") {
-            alert("Answer is correct!");
+            console.log(timer)
+            console.log(timer.textContent, 'this is time')
+            console.log(timer.innerHTML, 'type of timer')
+            let newValue = Number(timer.innerHTML) + 15
+            storage.setItem('secondsLeft', newValue)
+            console.log(score, 'this is score')
+            let newScore = Number(score) + 1
+            storage.setItem('score', newScore)
+            console.log(typeof score, 'this is score type')
+
+            renderTimer()
+
         }
-        // incorrect answer
         else {
-            alert("Answer is wrong!");
+            let newValue = Number(timer.innerHTML) - 15
+            storage.setItem('secondsLeft', newValue)
+            renderTimer()
+
         }
+        console.log(".submitButton")
+
+        document.location.href = "./page2.html"
+    }
+
+    $("#submitButton").click(function () {
+        return myFunc()
+    })
+
+
+
+
+
+
+    window.onload = () => {
+
+        renderTimer()
 
     }
+
+
 </script>
 
 </html>

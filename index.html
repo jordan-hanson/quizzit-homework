@@ -42,6 +42,9 @@
 
         console.log(enterNameField.value, 'this is entername field')
         storage.setItem('currentUserName', enterNameField.value)
+        storage.setItem('secondsLeft', 75)
+        storage.setItem('score', 0)
+
         document.location.href = `./page1.html`
 
     }

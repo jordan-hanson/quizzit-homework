@@ -1,13 +1,20 @@
 .container {
-    background-color: rgba(133, 122, 185, 0.616);
+    background-color: rgba(25, 159, 168, 0.616);
     width: 600px;
     height: 400px;
-    position: relative;
-    left: 500px;
+    position: absolute;
+    left: 425px;
     top: 150px;
     border-style: solid;
     border-width: 10px;
-    border-color: rgba(65, 30, 112, 0.616)
+    border-color: rgba(30, 100, 112, 0.616)
+}
+#titleContainer {
+    text-align: center;
+}
+#answerContainer {
+    text-align: left;
+    padding-left: 35%;
 }
 #name-container {
     width: 100px;
@@ -24,10 +31,23 @@
     width: 100px;
     height: 30px;
 }
-#submitButton{
-    width: 100px;
-    height: 30px;
+.submitButton{
+    width: 170px;
+    height: 40px;
     background-color: white;
+    text-align: center;
+    font-size: medium;
+    border-radius: 4px;
+    position: absolute;
+
+}
+.submitButton:hover {
+    background-color: grey;
+    color: white;
+}
+
+.buttonRow{
+    padding-left: 200%;
 }
 
 .hr {
