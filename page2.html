@@ -14,22 +14,21 @@
 
     <div id="main" class="container">
         <div id="timer"> </div>
-        <h1 id="titleContainer"> Where is the national headquarters for PRCA( Professional Rodeo Cowboy Association)
-            located?
+        <h1 id="titleContainer"> In what year did PRCA adopt the word Professional to their name?
         </h1>
         <div class="row"></div>
         <div class="col-sm-12"></div>
         <form id="answerContainer">
-            <input type="radio" name="choice" value="Texas"> Austin, TX
+            <input type="radio" name="choice" value="1978"> 1978
             <br>
             <br>
-            <input type="radio" name="choice" value="Colorado"> Colorado Springs, CO
+            <input type="radio" name="choice" value="1993"> 1993
             <br>
             <br>
-            <input type="radio" name="choice" value="Utah"> Salt Lake City, UT
+            <input type="radio" name="choice" value="1975"> 1975
             <br>
             <br>
-            <input type="radio" name="choice" value="Arizona"> Buckeye, AZ
+            <input type="radio" name="choice" value="1981"> 1981
         </form>
         <br>
         <div class="col-sm-6" id="buttonRow">
@@ -85,7 +84,7 @@
             alert("please select choice answer");
             return;
         }
-        if (userAnswer === "Colorado") {
+        if (userAnswer === "1975") {
             console.log(timer)
             console.log(timer.textContent, 'this is time')
             console.log(timer.innerHTML, 'type of timer')
@@ -107,7 +106,7 @@
         }
         console.log(".submitButton")
 
-        document.location.href = "./page2.html"
+        document.location.href = "./page3.html"
     }
 
     $("#submitButton").click(function () {
