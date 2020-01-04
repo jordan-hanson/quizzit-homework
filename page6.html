@@ -16,17 +16,45 @@
 
     <div id="main" class="container">
         <h1 class="row-12" style="text-align: center;">
-            Coding Quiz Challenge </h1>
+            Top High Scores</h1>
         <hr>
         <form id="nameContainer" action="">
-            <input id="enterNameField" type="text" name="entryname" placeholder="ENTER NAME">
             <button type="button" id="enterButton"> </button>
         </form>
     </div>
 
 </body>
 <script>
-    document.location.href = './index.html'
+
+    function endQuiz() {
+        let storage = window.localStorage;
+        let score = storage.getItem('score')
+        let currentUser = storage.getItem('currentUserName')
+        //let users = JSON.parse(localStorage.getItem('users')) || []
+
+        localStorage.setItem('users', JSON.stringify(arr));
+        let arr = JSON.parse(localStorage.getItem('users')) || []
+        console.log(arr, 'this is users')
+        let obj = {
+            score: Number(score),
+            name: currentUser
+        }
+
+        users.push(obj)
+
+        storage.setItem('users', users)
+
+        storage.setItem('currentUserName', score.value)
+
+        //document.location.href = './index.html'
+    }
+
+    //window.onload = () => {
+    //    endQuiz()
+
+    //}
+
+
 </script>
 
 </html>
