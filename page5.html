@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Rodeo Quiz</title>
+</head>
+
+<body>
+
+    <div id="main" class="container">
+        <div id="timer"> </div>
+        <h1 id="titleContainer"> In what year is the current arena record in Barrel Racing at the Thomas and Mack
+            accomplished?
+        </h1>
+        <div class="row"></div>
+        <div class="col-sm-12"></div>
+        <form id="answerContainer">
+            <input type="radio" name="choice" value="2015"> 2015
+            <br>
+            <br>
+            <input type="radio" name="choice" value="2017"> 2017
+            <br>
+            <br>
+            <input type="radio" name="choice" value="2018"> 2018
+            <br>
+            <br>
+            <input type="radio" name="choice" value="2010"> 2010
+        </form>
+        <br>
+        <div class="col-sm-6" id="buttonRow">
+            <button id="submitButton">Next Question
+            </button>
+        </div>
+    </div>
+</body>
+<script src="./script.js"></script>
+<script>
+    let storage = window.localStorage;
+
+    let score = storage.getItem('score')
+
+    const renderTimer = () => {
+        let timer = document.getElementById('timer')
+        let storage = window.localStorage;
+        let secondsLeft = storage.getItem('secondsLeft')
+        timer.textContent = secondsLeft
+
+        let timeLeft = Number(secondsLeft)
+
+        var timeInterval = setInterval(function () {
+            timeLeft.textContent = timeLeft;
+            timeLeft--;
+            timer.textContent = timeLeft;
+
+            if (timeLeft === 0) {
+                document.location.href = "./gameover.html"
+
+                clearInterval(timeInterval);
+
+            }
+
+        }, 1000);
+
+    }
+
+    const myFunc = () => {
+        let timer = document.getElementById('timer')
+
+        console.log('hit')
+        var radios = document.getElementsByName("choice");
+        var i = 0, len = radios.length;
+        var checked = false;
+        var userAnswer;
+
+        for (; i < len; i++) {
+            if (radios[i].checked) {
+                checked = true;
+                userAnswer = radios[i].value;
+            }
+        }
+        if (!checked) {
+            alert("please select choice answer");
+            return;
+        }
+        if (userAnswer === "2017") {
+            console.log(timer)
+            console.log(timer.textContent, 'this is time')
+            console.log(timer.innerHTML, 'type of timer')
+            let newValue = Number(timer.innerHTML) + 15
+            storage.setItem('secondsLeft', newValue)
+            console.log(score, 'this is score')
+            let newScore = Number(score) + 1
+            storage.setItem('score', newScore)
+            console.log(typeof score, 'this is score type')
+
+            renderTimer()
+
+        }
+        else {
+            let newValue = Number(timer.innerHTML) - 15
+            storage.setItem('secondsLeft', newValue)
+            renderTimer()
+
+        }
+        console.log(".submitButton")
+
+        document.location.href = "./page6.html"
+    }
+
+    $("#submitButton").click(function () {
+        return myFunc()
+    })
+
+
+
+
+
+
+    window.onload = () => {
+
+        renderTimer()
+
+    }
+
+
+</script>
+
+</html>
