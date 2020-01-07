@@ -9,6 +9,7 @@
 }
 #titleContainer {
     text-align: center;
+    font-size: x-large;
 }
 #answerContainer {
     text-align: left;
@@ -40,6 +41,7 @@
     border-radius: 4px;
     position: absolute;
 
+
 }
 .submitButton:hover {
     background-color: grey;
@@ -47,7 +49,8 @@
 }
 
 .buttonRow{
-    padding-left: 200%;
+    padding: 10%;
+    align-items: center;
 }
 
 .hr {
