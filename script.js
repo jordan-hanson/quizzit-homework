@@ -8,3 +8,5 @@ console.log(users, 'before sort')
 let highestScoreToLowest = users.sort((a, b) => b.score - a.score)
 
 console.log(highestScoreToLowest, 'after sort')
+
+ //set new local storage 
