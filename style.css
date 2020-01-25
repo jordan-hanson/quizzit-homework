@@ -89,3 +89,12 @@
     flex-wrap: wrap;
     flex-direction: row;
 }
+#yourScoreTitle{
+    text-align: center;
+}
+
+#nameContainer{
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}

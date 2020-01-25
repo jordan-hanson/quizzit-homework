@@ -16,66 +16,80 @@
 </head>
 
 <body>
-
-
     <div id="main" class="container">
-        <h1 class="row-12" style="text-align: center;">
-            Top High Scores</h1>
+        <h1 id="yourScoreTitle">Congrats! </h1>
+        <h1 id="userName" style="text-align: center;"> Name: </h1>
         <br>
-        <form id="nameContainer" action="">
-            <button type="button" id="enterButton"> </button>
-        </form>
-    </div>
-
-    <div id="main" class="container">
-        <h1 class="highscoreList" style="text-align: center;"> Top High Scores</h1>
+        <h1 id="highscoreList" class="highscoreList" style="text-align: center;"> Score: </h1>
         <br>
         <form id="nameContainer">
-            <button type="button" id="enterButton">Start New Quiz</button>
+            <button type="button" id="endButton">Start New Quiz</button>
         </form>
     </div>
 
 </body>
+<script src="script.js"></script>
 <script>
+    // var users = [{ name: "Jordan", score: 1000 }, { name: "Jordan", score: 500 }, { name: "Jordan", score: 3000 }, { name: "Jordan", score: 2000 }, { name: "Jordan", score: 500 }]
 
+    // console.log(users, 'before sort')
+
+    // var highestScoreToLowest = users.sort((a, b) => b.score - a.score)
+
+    // console.log(highestScoreToLowest, 'after sort')
     function endQuiz() {
-        let gameResult = {};
-        let highscoreList = [];
-        let storage = window.localStorage;
-        let score = storage.getItem('score')
-        let currentUser = storage.getItem('currentUserName')
-        let arr = JSON.parse(localStorage.getItem("users")) || []
+        var gameResult = {};
+        var highscoreList = [];
+        var storage = window.localStorage;
+        var score = storage.getItem('score')
+        var currentUser = storage.getItem('currentUserName')
+        var arr = localStorage.getItem("users")
 
-        localStorage.setItem('users', JSON.stringify(arr));
+        console.log(score)
+        console.log(currentUser)
 
-        console.log(arr, 'this is users');
+        document.getElementById('userName').innerHTML = currentUser
+        document.getElementById('highscoreList').innerHTML = score
+        // localStorage.setItem('users', JSON.stringify(arr));
 
-        let obj = {
-            score: Number(score),
-            name: currentUser
-        }
+        // console.log(arr, 'this is users');
 
-        users.push(obj)
+        // var obj = {
+        //     score: Number(score),
+        //     name: currentUser
+        // }
 
-        storage.setItem('users', users)
+        // users.push(obj)
 
-        storage.setItem('currentUser', score.value)
+        // storage.setItem('users', users)
 
-        users.sort(function (a, b) { return (b.score - a.score) });
+        // storage.setItem('currentUser', score.value)
 
-        $('#score1').text(users[0].player + " - score:" + users[0].score);
+        // users.sort(function (a, b) { return (b.score - a.score) });
+
+        // console.log(users)
+
+        // $('#score1').text(users[0].player + " - score:" + users[0].score);
 
         //storage.setItem('currentUserName', score.value)
         //Do I need to Jquery the currentUser?
         //document.location.href = './index.html'
     }
+    endQuiz();
 
-    //window.onload = () => {
-    //    endQuiz()
 
-    //}
+    window.onload = () => {
+        endQuiz()
+
+    }
+    var endButton = document.getElementById('endButton')
+
+    endButton.addEventListener('click', function () {
+        document.location.href = "./index.html"
+    })
 
 
 </script>
+
 
 </html>

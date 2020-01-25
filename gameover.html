@@ -28,9 +28,9 @@
 
 
 <script>
-    let storage = window.localStorage;
+    var storage = window.localStorage;
 
-    const startOver = () => {
+    var startOver = () => {
         storage.setItem('secondsLeft', 90)
         storage.setItem('score', 0)
         document.location.href = "./page1.html"
@@ -38,7 +38,7 @@
     }
 
     window.onload = () => {
-        let submitButton = document.getElementById('submitButton')
+        var submitButton = document.getElementById('submitButton')
         submitButton.onclick = startOver
     }
 

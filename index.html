@@ -35,14 +35,14 @@
 
 
 
-    let score = 0;
+    var score = 0;
     var currentUserName = window.localStorage.getItem('currentUserName');
 
-    let selectedAnswer = ""
-    let enterNameField = document.getElementById('enterNameField')
+    var selectedAnswer = ""
+    var enterNameField = document.getElementById('enterNameField')
 
     function enterQuiz() {
-        let storage = window.localStorage;
+        var storage = window.localStorage;
 
         console.log(enterNameField.value, 'this is entername field')
         storage.setItem('currentUserName', enterNameField.value)
@@ -53,7 +53,7 @@
 
     }
 
-    let enterButton = document.getElementById('enterButton')
+    var enterButton = document.getElementById('enterButton')
 
     enterButton.addEventListener('click', () => enterQuiz())
 
@@ -102,13 +102,13 @@
         ///etc.
     ];
 
-    let renderOptions = (choices) => {
+    var renderOptions = (choices) => {
         return choices.map((choice, index) => {
             return `<option value=${choice}> ${choice} </option>`
         })
     }
 
-    let welcomePage = "welcomePage"
+    var welcomePage = "welcomePage"
     var page2 = `
             <div>
                 <h1 class="row-12" style="text-align: center;">
@@ -198,10 +198,10 @@
     
     `
 
-    let pages = [page2, page3, page4, page5, page6, page7]
+    var pages = [page2, page3, page4, page5, page6, page7]
 
-    const changePage = (index) => {
-        let main = document.getElementById('main')
+    var changePage = (index) => {
+        var main = document.getElementById('main')
         main.innerHTML = pages[index]
 
         $("#selectMenu").on("change", handleSelectedAnswer)

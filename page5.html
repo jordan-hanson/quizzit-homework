@@ -44,17 +44,17 @@
 </body>
 <script src="./script.js"></script>
 <script>
-    let storage = window.localStorage;
+    var storage = window.localStorage;
 
-    let score = storage.getItem('score')
+    var score = storage.getItem('score')
 
-    const renderTimer = () => {
-        let timer = document.getElementById('timer')
-        let storage = window.localStorage;
-        let secondsLeft = storage.getItem('secondsLeft')
+    var renderTimer = () => {
+        var timer = document.getElementById('timer')
+        var storage = window.localStorage;
+        var secondsLeft = storage.getItem('secondsLeft')
         timer.textContent = secondsLeft
 
-        let timeLeft = Number(secondsLeft)
+        var timeLeft = Number(secondsLeft)
 
         var timeInterval = setInterval(function () {
             timeLeft.textContent = timeLeft;
@@ -72,8 +72,8 @@
 
     }
 
-    const myFunc = () => {
-        let timer = document.getElementById('timer')
+    var myFunc = () => {
+        var timer = document.getElementById('timer')
 
         console.log('hit')
         var radios = document.getElementsByName("choice");
@@ -95,10 +95,10 @@
             console.log(timer)
             console.log(timer.textContent, 'this is time')
             console.log(timer.innerHTML, 'type of timer')
-            let newValue = Number(timer.innerHTML) + 15
+            var newValue = Number(timer.innerHTML) + 15
             storage.setItem('secondsLeft', newValue)
             console.log(score, 'this is score')
-            let newScore = Number(score) + 1
+            var newScore = Number(score) + 1
             storage.setItem('score', newScore)
             console.log(typeof score, 'this is score type')
 
@@ -106,13 +106,30 @@
 
         }
         else {
-            let newValue = Number(timer.innerHTML) - 15
+            var newValue = Number(timer.innerHTML) - 15
             storage.setItem('secondsLeft', newValue)
             renderTimer()
 
         }
-        console.log(".submitButton")
+        // let currentUser = storage.getItem('currentUserName')
+        // let users = []
 
+
+
+
+        // localStorage.setItem('users', JSON.stringify(arr));
+
+
+        // let obj = {
+        //     score: Number(score),
+        //     name: currentUser
+        // }
+
+
+
+        // users.push(obj)
+        // users = JSON.stringify(users)
+        // storage.setItem('users', users)
         document.location.href = "./page6.html"
     }
 
