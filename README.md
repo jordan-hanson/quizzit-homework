@@ -5,8 +5,11 @@
 The purpose of this application is to give users a 5 question quiz while keeping track of their score and rendering their time remaining based upon their answer choices.
 ​
 ### Gallery
-​
+
 Home:
+![QuizTitlePage](./QuizTitlePage.png "QuizTitlePage")​
+
+Quiz In Action:
 ![QuizVideo](./QuizVideo.mov "QuizVideo")
 
 ​
